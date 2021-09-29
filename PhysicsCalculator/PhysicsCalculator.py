@@ -1,10 +1,13 @@
+import math
+import sys
+
 #Gravitational force between two objects
 def gravity():
-    G = (6.674*(10^-11))
+    G = (6.674*(10**-11))
     m1 = input("Mass of first object (in kg): ")
     m2 = input("Mass of second object (in kg): ")
     r = input("Distance between first and second object (in Meters): ")
-    f = (G*(float(m1) * float(m2)))/(int(r)^2)
+    f = (G*(float(m1) * float(m2)))/(int(r)**2)
     print(str(f) + "N/kg")
     return f
 
@@ -13,17 +16,17 @@ def solveD():
     vI = input("Enter Initial Velocity (in m/s): ")
     t = input("Enter time (in seconds): ")
     a = input("Enter acceleration (in m^2/2): ")
-    d = float(vI)*float(t)+(1/2)*float(a)*float(t)^2
+    d = float(vI)*float(t)+(1/2)*float(a)*float(t)**2
     print(str(d))
     return d
 
 def solveT():
     vI = input("Enter Initial Velocity (in m/s): ")
-    vF = input("Enter Initial Velocity (in m/s): ")
+    vF = input("Enter Final Velocity (in m/s): ")
     a = input("Enter acceleration (in m^2/2): ")
-    if vF == null:
+    if float(vF) == 0:
         d = input("Enter distance (in Meters): ")
-        t = (-float(vI) + sqrt(float(vI)^2 + 2*float(a)*float(d)))/float(a)
+        t = (-float(vI) + math.sqrt(float(vI)**2 + 2*float(a)*float(d)))/float(a)
     else:
         t = (float(vF) - float(vI))/float(a)
     print(str(t))
@@ -41,9 +44,9 @@ def solveVI():
     a = input("Enter acceleration (in m^2/2): ")
     d = input("Enter distance (in Meters): ")
     vF = input("Enter Initial Velocity (in m/s): ")
-    vI = 2*float(a)*float(d)+sqrt(float(vF))
-    vIConfirmed = (float(vI)^2 - float(vF)^2)-(2*float(a)*float(d))
-    if vIConfirmed == 0:
+    vI = 2*float(a)*float(d)+math.sqrt(float(vF))
+    vIConfirmed = (float(vI)**2 - float(vF)**2)-(2*float(a)*float(d))
+    if vIConfirmed != 0:
            print(str(vI))
     else:
         print("Error in equation")
@@ -65,32 +68,49 @@ def acceleratedMotion():
     print("4 - Final Velocity")
     print("5 - Distance")
     k = input("Enter the number corresponding to the variable you need to solve for: ")
-    def chooseEquation(k):
-        switcher={
-            1:'a - Acceleration',
-            2:'t - Time',
-            3:'vI - Initial Velocity',
-            4:'vF - Final Velocity',
-            5:'d - Distance'
-            }
-        return switcher.get(k, "Invalid Input")
     print("Solving for: ")
-    chooseEquation(k)
-    switcher={
-        1:solveA(),
-        2:solveT(),
-        3:solveVI(),
-        4:solveVF(),
-        5:solveD()
-        }
-    return switcher.get(k)
+    def chooseEquation(k):
+        if int(k) == 1:
+            print("a - Acceleration")
+        elif int(k) == 2:
+            print("t - Time")
+        elif int(k) == 3:
+            print("vI - Initial Velocity")
+        elif int(k) == 4:
+            print("vF - Final Velocity")
+        elif int(k) == 5:
+            print("d - Distance")
+    chooseEquation(int(k))
+    if int(k) == 1:
+        solveA()
+    elif int(k) == 2:
+        solveT()
+    elif int(k) == 3:
+        solveVI()
+    elif int(k) == 4:
+        solveVF()
+    elif int(k) == 5:
+        solveD()
 
+    
+  
 
 def main():
-    choice = input("Please enter 1 for gravity and 2 for accelerated motion: ")
-    if choice == 1:
-        gravity()
-    else:
-        acceleratedMotion()
+    print("|                  PHYSICS CALCULATOR                   |")
+    print("Please select from one of the options:")
+    print("Enter 1 to calculate Gravity between two objects, ")
+    print("2 to solve an Accelerated Motion equation, or 3 to Exit")
+    initUser = " "
+    choice = input(initUser)
+    def menuChoice():
+        if int(choice) == 1:
+            gravity()
+        elif int(choice) == 2:
+            acceleratedMotion()
+        elif int(choice) == 3:
+            sys.exit()
+    menuChoice()
+    main()
+   
 
 main()
