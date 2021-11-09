@@ -1,6 +1,6 @@
 import math
 import sys
-
+#https://docs.djangoproject.com/en/3.2/intro/tutorial01/
 #Gravitational force between two objects
 def gravity():
     G = (6.674*(10**-11))
