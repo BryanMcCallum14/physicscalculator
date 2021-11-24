@@ -1,8 +1,4 @@
-###### physicscalculator
-
-### Will be rebranded as Physics Tutor
-## A Python/Django web app built to help learn introductory Physics.
-## Currrent program only has Python code to solve Accelerated Motion equations.
+##### Physics Calculator
 
 ## Table of contents
 * [General info](#general-info)
