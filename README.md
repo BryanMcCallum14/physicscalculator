@@ -1,4 +1,4 @@
-##### Physics Calculator
+# Physics Calculator
 
 ## Table of contents
 * [General info](#general-info)
